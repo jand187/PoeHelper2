@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ItemParser.cs" />
     <Compile Include="Model\IItemMod.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\RangeValueMod.cs" />

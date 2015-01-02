@@ -1,0 +1,78 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using PoeHelper.Engine.Model;
+
+namespace PoeHelper.Engine
+{
+	public class ItemParser
+	{
+		private ModParser modParser;
+
+		public Item Parse(string itemText)
+		{
+			modParser = new ModParser();
+
+			var lines = itemText.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
+			var rarity = Regex.Match(lines.First(), @"Rarity: (?<rarity>\w+)").Groups["rarity"].Value;
+
+			return new Item
+			{
+				Rarity = rarity,
+				Name = lines[1],
+				ItemType = GetItemType(lines, rarity),
+				Mods = GetMods(lines, rarity),
+			};
+		}
+
+		private IEnumerable<IItemMod> GetMods(string[] lines, string rarity)
+		{
+			switch (rarity)
+			{
+				case "Normal":
+					return new List<IItemMod>();
+				case "Magic":
+				case "Rare":
+				case "Unique":
+					var modStartLine = GetModStart(lines);
+					return modParser.Parse(string.Join(Environment.NewLine, lines.Skip(modStartLine))).ToList();
+
+				default:
+					Console.WriteLine("Unknown rarity '{0}'", rarity);
+					break;
+			}
+
+			return new List<IItemMod>();
+		}
+
+		private int GetModStart(string[] lines)
+		{
+			for (var index = 0; index < lines.Length; index++)
+			{
+				if (lines[index].StartsWith("Itemlevel: "))
+					return index + 2;
+			}
+
+			return 0;
+		}
+
+		private string GetItemType(string[] lines, string rarity)
+		{
+			switch (rarity)
+			{
+				case "Normal":
+				case "Magic":
+					return lines[1];
+
+				case "Rare":
+				case "Unique":
+					return lines[2];
+
+				default:
+					Console.WriteLine("Unknown rarity '{0}'", rarity);
+					return "Unknown";
+			}
+		}
+	}
+}
