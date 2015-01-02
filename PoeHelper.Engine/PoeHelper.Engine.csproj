@@ -43,8 +43,16 @@
     <Compile Include="Model\RangeValueMod.cs" />
     <Compile Include="Model\SingleValueMod.cs" />
     <Compile Include="ModParser.cs" />
+    <Compile Include="ModParsers\AddsRangeToPropertyParser.cs" />
+    <Compile Include="ModParsers\IModParser.cs" />
+    <Compile Include="ModParsers\PercentIncreasedPropertyParser.cs" />
+    <Compile Include="ModParsers\PercentOfPropertyParser.cs" />
+    <Compile Include="ModParsers\PlusPercentToPropertyParser.cs" />
+    <Compile Include="ModParsers\PlusToPropertyParser.cs" />
+    <Compile Include="ModParsers\ReflectPropertyParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
