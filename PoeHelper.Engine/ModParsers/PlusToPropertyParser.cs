@@ -16,6 +16,7 @@ namespace PoeHelper.Engine.ModParsers
 				@"\+(?<value>\d+) (?<name>to Strength)",
 				@"\+(?<value>\d+) (?<name>to Dexterity)",
 				@"\+(?<value>\d+) (?<name>to Intelligence)",
+				@"\+(?<value>\d+) (?<name>to all Attributes)",
 				@"\+(?<value>\d+) (?<name>to maximum Energy Shield)",
 				@"\+(?<value>\d+) (?<name>to Armour)",
 				@"\+(?<value>\d+) (?<name>to Accuracy Rating)",

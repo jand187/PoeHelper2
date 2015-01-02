@@ -17,12 +17,14 @@ namespace PoeHelper.Engine.ModParsers
 				@"(?<value>\d+)% (?<name>increased Physical Damage)",
 				@"(?<value>\d+)% (?<name>increased Spell Damage)",
 				@"(?<value>\d+)% (?<name>increased Elemental Damage with Weapons)",
+				@"(?<value>\d+)% (?<name>increased Elemental Damage)",
 
 				// attack
 				@"(?<value>\d+)% (?<name>increased Attack Speed)",
 				@"(?<value>\d+)% (?<name>increased Accuracy Rating)",
 				@"(?<value>\d+)% (?<name>increased Stun Recovery)",
 				@"(?<value>\d+)% (?<name>increased Critical Strike Chance)",
+				@"(?<value>\d+)% (?<name>increased Global Critical Strike Chance)",
 
 				//defense
 				@"(?<value>\d+)% (?<name>increased Evasion Rating)",
@@ -31,6 +33,7 @@ namespace PoeHelper.Engine.ModParsers
 				@"(?<value>\d+)% (?<name>increased Armour and Energy Shield)",
 				@"(?<value>\d+)% (?<name>increased Armour and Evasion Rating)",
 				@"(?<value>\d+)% (?<name>increased Evasion and Energy Shield)",
+				@"(?<value>\d+)% (?<name>increased Block Recovery)",
 
 				// effects
 				@"(?<value>\d+)% (?<name>increased Stun Duration on Enemies)",
