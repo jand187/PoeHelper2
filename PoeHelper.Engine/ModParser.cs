@@ -9,6 +9,8 @@ namespace PoeHelper.Engine
 	public class ModParser
 	{
 		private readonly IEnumerable<IModParser> modParsers;
+		private IItemMod lastMod;
+		private bool implicitFound;
 
 		public ModParser()
 		{
@@ -28,18 +30,35 @@ namespace PoeHelper.Engine
 			var lines = modText.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
 			foreach (var line in lines)
 			{
-				IModParser parser = null; 
+				if (line == "--------" && lastMod != null && !implicitFound)
+				{
+					lastMod.ModType = ModTypes.Implicit;
+					implicitFound = true;
+					continue;
+				}
+
+				IModParser parser = null;
 				try
 				{
 					parser = modParsers.Single(m => m.CanParse(line));
 				}
 				catch (InvalidOperationException e)
 				{
-					Console.WriteLine("Could not find parser for line '{0}'", line);
+					Console.WriteLine("ModParser could not find parser for line '{0}'", line);
+					continue;
 				}
 
-				yield return parser.Parse(line);
+				lastMod = parser.Parse(line);
+				lastMod.ModType = ModTypes.Explicit;
+				yield return lastMod;
 			}
 		}
+	}
+
+	public enum ModTypes
+	{
+		Unknown = 0,
+		Implicit = 1,
+		Explicit = 2,
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
 using FluentAssertions;
@@ -60,6 +61,9 @@ Adds 29-48 Cold Damage
 			foreach (var file in files)
 			{
 				var modText = File.ReadAllText(file);
+				if (modText.Contains("Rarity: Normal"))
+					continue;
+
 				var startIndex = modText.LastIndexOf("--------", System.StringComparison.Ordinal) + "--------".Length;
 				modText = modText.Substring(startIndex);
 				target.Parse(modText).ToList();
