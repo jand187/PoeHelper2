@@ -39,6 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\IItemMod.cs" />
+    <Compile Include="Model\RangeValueMod.cs" />
+    <Compile Include="Model\SingleValueMod.cs" />
     <Compile Include="ModParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
