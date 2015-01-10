@@ -17,14 +17,17 @@ namespace PoeHelper.Engine
 			var lines = itemText.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
 			var rarity = Regex.Match(lines.First(), @"Rarity: (?<rarity>\w+)").Groups["rarity"].Value;
 
-			return new Item
+			var item = new Item
 			{
 				Rarity = rarity,
 				Name = lines[1],
 				ItemType = GetItemType(lines, rarity),
+				Requirements = new PropertyParser().Parse(lines).ToList(),
 				ItemLevel = GetProperty(lines, "Itemlevel: "),
 				Mods = GetMods(lines, rarity),
 			};
+
+			return item;
 		}
 
 		private int GetProperty(IEnumerable<string> lines, string key)
