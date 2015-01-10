@@ -53,6 +53,7 @@
     <Compile Include="ModParsers\PlusToPropertyParser.cs" />
     <Compile Include="ModParsers\ReflectPropertyParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyParser.cs" />
     <Compile Include="Model\Requirement.cs" />
   </ItemGroup>
   <ItemGroup />
