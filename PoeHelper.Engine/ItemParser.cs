@@ -22,8 +22,14 @@ namespace PoeHelper.Engine
 				Rarity = rarity,
 				Name = lines[1],
 				ItemType = GetItemType(lines, rarity),
+				ItemLevel = GetProperty(lines, "Itemlevel: "),
 				Mods = GetMods(lines, rarity),
 			};
+		}
+
+		private int GetProperty(IEnumerable<string> lines, string key)
+		{
+			return Convert.ToInt32(lines.Single(l => l.StartsWith(key)).Replace(key, string.Empty));
 		}
 
 		private IEnumerable<IItemMod> GetMods(string[] lines, string rarity)

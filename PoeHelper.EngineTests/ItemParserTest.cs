@@ -22,6 +22,7 @@ namespace PoeHelper.EngineTests
 Cataclysm Cloak
 Crypt Armour
 --------";
+Itemlevel: 56";
 			var item = target.Parse(itemText);
 			item.Rarity.Should().Be("Rare");
 		}
@@ -40,6 +41,7 @@ Crypt Armour
 				item.Name.Should().NotBeNullOrEmpty();
 				item.Rarity.Should().NotBeNullOrEmpty();
 				item.ItemType.Should().NotBeNullOrEmpty();
+				item.ItemLevel.Should().NotBe(0);
 				item.Mods.Should().NotBeNull();
 			}
 		}

@@ -10,5 +10,6 @@ namespace PoeHelper.Engine.Model
 		public string Name { get; set; }
 		public string ItemType { get; set; }
 		public IEnumerable<IItemMod> Mods { get; set; }
+		public int ItemLevel { get; set; }
 	}
 }
