@@ -8,12 +8,17 @@ namespace PoeHelper.Engine
 {
 	public class ItemParser
 	{
-		private ModParser modParser;
+		private readonly ModParser modParser;
+		private readonly RequirementParser requirementParser;
+
+		public ItemParser()
+		{
+			modParser = new ModParser();
+			requirementParser = new RequirementParser();
+		}
 
 		public Item Parse(string itemText)
 		{
-			modParser = new ModParser();
-
 			var lines = itemText.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
 			var rarity = Regex.Match(lines.First(), @"Rarity: (?<rarity>\w+)").Groups["rarity"].Value;
 
@@ -22,7 +27,7 @@ namespace PoeHelper.Engine
 				Rarity = rarity,
 				Name = lines[1],
 				ItemType = GetItemType(lines, rarity),
-				Requirements = new PropertyParser().Parse(lines).ToList(),
+				Requirements = requirementParser.Parse(lines).ToList(),
 				ItemLevel = GetProperty(lines, "Itemlevel: "),
 				Mods = GetMods(lines, rarity),
 			};
