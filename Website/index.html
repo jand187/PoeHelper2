@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bootstrap 101 Template</title>
+
+	<link href="Content/bootstrap.min.css" rel="stylesheet"/>
+	<link href="Content/bootstrap-theme.min.css" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1>Character editor</h1>
+	</div>
+	<table class="table table-bordered">
+		<tr>
+			<td>
+				<form class="form-group-sm">
+					<table class="table table-condensed">
+						<tr>
+							<td class="form-group">
+								<label for="character-class">Class</label>
+								<select class="form-control" name="character-class" id="character-class">
+									<option></option>
+									<option>Witch</option>
+									<option>Shadow</option>
+									<option>Ranger</option>
+									<option>Dualist</option>
+									<option>Marauder</option>
+									<option>Templar</option>
+									<option>Scion</option>
+								</select>
+							</td>
+						</tr>
+
+						<tr>
+							<td class="form-group">
+								<label for="level">level</label>
+								<input class="form-control" name="level" id="level"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="form-group">
+								<label for="Str">Str</label>
+								<input class="form-control" name="Str" id="Str"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="form-group">
+								<label for="Dex">Dex</label>
+								<input class="form-control" name="Dex" id="Dex"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="form-group">
+								<label for="Int">Int</label>
+								<input class="form-control" name="Int" id="Int"/>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</td>
+			<td>
+				<table class="table table-condensed">
+					<tr>
+						<td>Life</td>
+						<td>
+							<span id="life"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>Mana</td>
+						<td>
+							<span id="mana"></span>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+
+	</table>
+
+
+</div>
+
+
+<script src="Scripts/jquery-2.1.3.min.js"></script>
+<script src="Scripts/bootstrap.min.js"></script>
+
+	<script>
+	$(function () {
+
+		console.log("test");
+	});
+
+	</script>
+
+
+</body>
+</html>
