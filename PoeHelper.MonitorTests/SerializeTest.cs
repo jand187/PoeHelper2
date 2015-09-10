@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using PoeHelper.Monitor;
 using Xunit;
 
 namespace PoeHelper.MonitorTests
@@ -24,7 +24,7 @@ namespace PoeHelper.MonitorTests
 				}
 			};
 
-			var binder = new DummyBinder("PoeHelper.MonitorTests.{0}, PoeHelper.MonitorTests");
+			var binder = new TypedSerializationBinder("PoeHelper.MonitorTests.{0}, PoeHelper.MonitorTests");
 			var json = JsonConvert.SerializeObject(list, Formatting.Indented, new JsonSerializerSettings
 			{
 				Binder = binder,
@@ -37,29 +37,6 @@ namespace PoeHelper.MonitorTests
 				Binder = binder,
 				TypeNameHandling = TypeNameHandling.Auto
 			});
-		}
-	}
-
-	public class DummyBinder : SerializationBinder
-	{
-		public DummyBinder(string typeFormat)
-		{
-			TypeFormat = typeFormat;
-		}
-
-		public string TypeFormat { get; private set; }
-
-		public override void BindToName(Type serializedType, out string assemblyName, out string typeName)
-		{
-			assemblyName = null;
-			typeName = serializedType.Name;
-		}
-
-		public override Type BindToType(string assemblyName, string typeName)
-		{
-			string resolvedTypeName = string.Format(TypeFormat, typeName);
-
-			return Type.GetType(resolvedTypeName, true);
 		}
 	}
 

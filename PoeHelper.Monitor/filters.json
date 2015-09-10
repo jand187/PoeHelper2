@@ -1,0 +1,42 @@
+﻿[
+	{
+		"$type": "Filters.AndModFilter",
+		"Name": "Amulet Spell Damage",
+		"ChildFilters": [
+			{
+				"$type": "Filters.RegexModFilter",
+				"Name": "Amulet",
+				"Pattern": "Amulet"
+			},
+			{
+				"$type": "Filters.RegexModFilter",
+				"Name": "increased Spell Damage",
+				"Pattern": "(\\d+)% increased Spell Damage",
+				"GroupConditions": [
+					{
+						"$type": "GroupCondition.AtLeast",
+						"Group": 1,
+						"Value": 18
+					}
+				]
+			}
+		]
+	},
+	{
+		"$type": "Filters.RegexModFilter",
+		"Name": "Spell Damage",
+		"Pattern": "(\\d+)% increased Spell Damage",
+		"GroupConditions": [
+			{
+				"$type": "GroupCondition.AtLeast",
+				"Group": 1,
+				"Value": 70
+			}
+		]
+	},
+	{
+		"$type": "Filters.RegexModFilter",
+		"Name": "Weapon",
+		"Pattern": "(One|Two) Handed (Mace|Sword|Axe)|Staff|Wand|Claw"
+	}
+]

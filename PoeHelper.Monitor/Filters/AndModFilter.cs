@@ -16,7 +16,15 @@ namespace PoeHelper.Monitor.Filters
 			if (ChildFilters.Any(c => !c.FindMatches(text).Any()))
 				return new IModFilterResult[0];
 
-			return ChildFilters.SelectMany(c => c.FindMatches(text));
+			var childFilterResults = ChildFilters.SelectMany(c => c.FindMatches(text));
+
+			return new IModFilterResult[]
+			{
+				new AndModFilterResult(childFilterResults)
+				{
+					Name = this.Name
+				}
+			};
 		}
 	}
 }

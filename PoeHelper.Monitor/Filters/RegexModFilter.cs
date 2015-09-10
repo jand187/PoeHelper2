@@ -18,10 +18,21 @@ namespace PoeHelper.Monitor.Filters
 
 			foreach (var match in matches)
 			{
+				if (GroupConditions == null)
+				{
+					yield return new RegexModFilterResult
+					{
+						Name = Name,
+						Matches = match.Groups[0].Value
+					};
+
+					yield break;
+				}
+
 				if (GroupConditions.All(g => g.IsSatisfiedBy(match)))
 					yield return new RegexModFilterResult
 					{
-						Name = ">39",
+						Name = Name,
 						Matches = match.Groups[0].Value
 					};
 			}

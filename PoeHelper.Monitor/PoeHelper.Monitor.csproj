@@ -50,24 +50,27 @@
     <Compile Include="ClipBoardHandler.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Filters\AndModFilter.cs" />
+    <Compile Include="Filters\AndModFilterResult.cs" />
     <Compile Include="Filters\IModFilter.cs" />
     <Compile Include="Filters\IModFilterResult.cs" />
     <Compile Include="Filters\RegexModFilter.cs" />
+    <Compile Include="Filters\RegexModFilterResult.cs" />
     <Compile Include="GroupCondition\AtLeast.cs" />
     <Compile Include="GroupCondition\IGroupCondition.cs" />
-    <Compile Include="LogForm.cs">
+    <Compile Include="ItemParser.cs" />
+    <Compile Include="MatchCondition\GreaterThan.cs" />
+    <Compile Include="MonitorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LogForm.Designer.cs">
-      <DependentUpon>LogForm.cs</DependentUpon>
+    <Compile Include="MonitorForm.Designer.cs">
+      <DependentUpon>MonitorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MatchCondition\GreaterThan.cs" />
-    <Compile Include="ModFilter.cs" />
-    <Compile Include="Filters\Class1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="LogForm.resx">
-      <DependentUpon>LogForm.cs</DependentUpon>
+    <Compile Include="TypedSerializationBinder.cs" />
+    <EmbeddedResource Include="MonitorForm.resx">
+      <DependentUpon>MonitorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -78,6 +81,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="filters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
