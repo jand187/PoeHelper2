@@ -50,6 +50,11 @@
     <Compile Include="ClipBoardHandler.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Filters\IModFilter.cs" />
+    <Compile Include="Filters\IModFilterResult.cs" />
+    <Compile Include="Filters\RegexModFilter.cs" />
+    <Compile Include="GroupCondition\AtLeast.cs" />
+    <Compile Include="GroupCondition\IGroupCondition.cs" />
     <Compile Include="LogForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +63,7 @@
     </Compile>
     <Compile Include="MatchCondition\GreaterThan.cs" />
     <Compile Include="ModFilter.cs" />
+    <Compile Include="Filters\Class1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="LogForm.resx">
